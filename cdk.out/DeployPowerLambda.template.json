@@ -261,7 +261,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "0ea5cd3c3f1e963f1f0d8a6057468710626d05adea57e53f3fa75adcdad102d0.zip"
+     "S3Key": "89dbe2ff060567de12997dd6e477336b68426bc642d84d4dd0a46acbf5a50ffd.zip"
     },
     "Environment": {
      "Variables": {
@@ -312,7 +312,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/validateAddress/Resource",
-    "aws:asset:path": "asset.0ea5cd3c3f1e963f1f0d8a6057468710626d05adea57e53f3fa75adcdad102d0",
+    "aws:asset:path": "asset.89dbe2ff060567de12997dd6e477336b68426bc642d84d4dd0a46acbf5a50ffd",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }

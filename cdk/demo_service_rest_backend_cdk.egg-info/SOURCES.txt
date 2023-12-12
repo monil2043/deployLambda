@@ -1,7 +1,6 @@
 setup.py
 demo_service_rest_backend/__init__.py
 demo_service_rest_backend/api_construct.py
-demo_service_rest_backend/api_db_construct.py
 demo_service_rest_backend/constants.py
 demo_service_rest_backend/monitoring.py
 demo_service_rest_backend/service_stack.py
