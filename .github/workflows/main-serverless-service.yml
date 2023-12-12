@@ -25,7 +25,7 @@ jobs:
       run: |
         mkdir -p ~/.aws
         touch ~/.aws/credentials
-        echo "[default]
+        echo "[your-aws-profile]
         aws_access_key_id = ${AWS_ACCESS_KEY_ID}
         aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
       env: 
@@ -33,7 +33,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Deploy to AWS
-      run: export AWS_PROFILE=your-aws-profile
-
-    - name: Deploy complete stack
       run: make deploy
+      env:
+        AWS_PROFILE: your-aws-profile
