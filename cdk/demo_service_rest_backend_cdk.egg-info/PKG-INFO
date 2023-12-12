@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: demo-service-rest-backend-cdk
+Version: 1.0
+Summary: CDK code for deploying the serverless service
+Home-page: https://github.com/ContactCenterOnAWS/demo_service_rest_backend
+Author: Jyoti Rathi
+Author-email: jyotiraws@gmail.com
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.12

@@ -1,0 +1,1141 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "DeployPowerLambda": {
+        "id": "DeployPowerLambda",
+        "path": "DeployPowerLambda",
+        "children": {
+          "DeployPowerLambda-DynamicConf": {
+            "id": "DeployPowerLambda-DynamicConf",
+            "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf",
+            "children": {
+              "DeployPowerLambda-DynamicConfvalidateAddress": {
+                "id": "DeployPowerLambda-DynamicConfvalidateAddress",
+                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfvalidateAddress",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfvalidateAddress/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Application",
+                      "aws:cdk:cloudformation:props": {
+                        "name": "DeployPowerLambda-DynamicConfvalidateAddress"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnApplication",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-appconfig-alpha.Application",
+                  "version": "2.114.1-alpha.0"
+                }
+              },
+              "DeployPowerLambda-DynamicConfenv": {
+                "id": "DeployPowerLambda-DynamicConfenv",
+                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfenv",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfenv/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Environment",
+                      "aws:cdk:cloudformation:props": {
+                        "applicationId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+                        },
+                        "name": "dev"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnEnvironment",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-appconfig-alpha.Environment",
+                  "version": "2.114.1-alpha.0"
+                }
+              },
+              "DeployPowerLambda-DynamicConfzero": {
+                "id": "DeployPowerLambda-DynamicConfzero",
+                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::DeploymentStrategy",
+                      "aws:cdk:cloudformation:props": {
+                        "deploymentDurationInMinutes": 0,
+                        "finalBakeTimeInMinutes": 0,
+                        "growthFactor": 100,
+                        "growthType": "LINEAR",
+                        "name": "DeployPowerLambda-DeployPoweyPowerLambdaDynamicConfzero-AA48B5EB",
+                        "replicateTo": "NONE"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnDeploymentStrategy",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-appconfig-alpha.DeploymentStrategy",
+                  "version": "2.114.1-alpha.0"
+                }
+              },
+              "DeployPowerLambda-DynamicConfversion": {
+                "id": "DeployPowerLambda-DynamicConfversion",
+                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion",
+                "children": {
+                  "ConfigurationProfile": {
+                    "id": "ConfigurationProfile",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/ConfigurationProfile",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::ConfigurationProfile",
+                      "aws:cdk:cloudformation:props": {
+                        "applicationId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+                        },
+                        "locationUri": "hosted",
+                        "name": "my_conf",
+                        "type": "AWS.Freeform"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnConfigurationProfile",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::HostedConfigurationVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "applicationId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+                        },
+                        "configurationProfileId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
+                        },
+                        "content": "{\n    \"features\": {\n        \"feature1\": {\n            \"default\": false,\n            \"rules\": {\n                \"enable feature 1 when a given key has a specified value\": {\n                    \"when_match\": true,\n                    \"conditions\": [\n                        {\n                            \"action\": \"EQUALS\",\n                            \"key\": \"customer_name\",\n                            \"value\": \"Good Customer\"\n                        }\n                    ]\n                }\n            }\n        },\n        \"ten_percent_off_campaign\": {\n            \"default\": true\n        }\n    },\n    \"countries\": [\n        \"ISRAEL\",\n        \"USA\"\n    ]\n}",
+                        "contentType": "application/octet-stream"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnHostedConfigurationVersion",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Deployment71A07": {
+                    "id": "Deployment71A07",
+                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment71A07",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "applicationId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+                        },
+                        "configurationProfileId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
+                        },
+                        "configurationVersion": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversion84008A0F"
+                        },
+                        "deploymentStrategyId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722"
+                        },
+                        "environmentId": {
+                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfenv9D2F1002"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_appconfig.CfnDeployment",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-appconfig-alpha.HostedConfiguration",
+                  "version": "2.114.1-alpha.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "LambdaStack": {
+            "id": "LambdaStack",
+            "path": "DeployPowerLambda/LambdaStack",
+            "children": {
+              "ServiceRoleArn": {
+                "id": "ServiceRoleArn",
+                "path": "DeployPowerLambda/LambdaStack/ServiceRoleArn",
+                "children": {
+                  "ImportServiceRoleArn": {
+                    "id": "ImportServiceRoleArn",
+                    "path": "DeployPowerLambda/LambdaStack/ServiceRoleArn/ImportServiceRoleArn",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/LambdaStack/ServiceRoleArn/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "policies": [
+                          {
+                            "policyName": "dynamic_configuration",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "appconfig:GetLatestConfiguration",
+                                    "appconfig:StartConfigurationSession"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          },
+                          {
+                            "policyName": "appconfig_full_access",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "appconfig:*",
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "owner",
+                            "value": "monilranka"
+                          },
+                          {
+                            "key": "service",
+                            "value": "validateAddress"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "DeployPowerLambda/LambdaStack/ServiceRoleArn/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LambdaStack/ServiceRoleArn/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "xray:PutTraceSegments",
+                                    "xray:PutTelemetryRecords"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "LambdaStackServiceRoleArnDefaultPolicy2E72D1AA",
+                            "roles": [
+                              {
+                                "Ref": "LambdaStackServiceRoleArn4C3B316A"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.114.1"
+                }
+              },
+              "LambdaStackcommon": {
+                "id": "LambdaStackcommon",
+                "path": "DeployPowerLambda/LambdaStack/LambdaStackcommon",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.114.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "compatibleRuntimes": [
+                          "python3.12"
+                        ],
+                        "content": {
+                          "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
+                          "s3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-lambda-python-alpha.PythonLayerVersion",
+                  "version": "2.114.1-alpha.0"
+                }
+              },
+              "LambdaStackAppConfigLayer": {
+                "id": "LambdaStackAppConfigLayer",
+                "path": "DeployPowerLambda/LambdaStack/LambdaStackAppConfigLayer",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.114.1"
+                }
+              },
+              "validateAddress": {
+                "id": "validateAddress",
+                "path": "DeployPowerLambda/LambdaStack/validateAddress",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "DeployPowerLambda/LambdaStack/validateAddress/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "DeployPowerLambda/LambdaStack/validateAddress/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.114.1"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "DeployPowerLambda/LambdaStack/validateAddress/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/LambdaStack/validateAddress/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
+                          "s3Key": "0ea5cd3c3f1e963f1f0d8a6057468710626d05adea57e53f3fa75adcdad102d0.zip"
+                        },
+                        "environment": {
+                          "variables": {
+                            "POWERTOOLS_SERVICE_NAME": "validateAddress",
+                            "LOG_LEVEL": "DEBUG",
+                            "CONFIGURATION_APP": "DeployPowerLambda-DynamicConfvalidateAddress",
+                            "CONFIGURATION_ENV": "dev",
+                            "CONFIGURATION_NAME": "my_conf",
+                            "CONFIGURATION_MAX_AGE_MINUTES": "5",
+                            "ROLE_ARN": "arn:partition:service:region:account-id:resource-type:resource-id",
+                            "USER_ID": "7NEURA45X5797"
+                          }
+                        },
+                        "functionName": "callExternalRestAPI",
+                        "handler": "lambda_function.lambda_handler",
+                        "layers": [
+                          {
+                            "Ref": "LambdaStackLambdaStackcommon0D28F4F6"
+                          },
+                          "arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113"
+                        ],
+                        "memorySize": 128,
+                        "role": {
+                          "Fn::GetAtt": [
+                            "LambdaStackServiceRoleArn4C3B316A",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "python3.12",
+                        "tags": [
+                          {
+                            "key": "owner",
+                            "value": "monilranka"
+                          },
+                          {
+                            "key": "service",
+                            "value": "validateAddress"
+                          }
+                        ],
+                        "timeout": 10,
+                        "tracingConfig": {
+                          "mode": "Active"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "LogRetention": {
+                    "id": "LogRetention",
+                    "path": "DeployPowerLambda/LambdaStack/validateAddress/LogRetention",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LambdaStack/validateAddress/LogRetention/Resource",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.CfnResource",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_logs.LogRetention",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "LogGroup": {
+                    "id": "LogGroup",
+                    "path": "DeployPowerLambda/LambdaStack/validateAddress/LogGroup",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "EventInvokeConfig": {
+                    "id": "EventInvokeConfig",
+                    "path": "DeployPowerLambda/LambdaStack/validateAddress/EventInvokeConfig",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LambdaStack/validateAddress/EventInvokeConfig/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::EventInvokeConfig",
+                          "aws:cdk:cloudformation:props": {
+                            "functionName": {
+                              "Ref": "LambdaStackvalidateAddress4D6E275F"
+                            },
+                            "maximumRetryAttempts": 0,
+                            "qualifier": "$LATEST"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnEventInvokeConfig",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.EventInvokeConfig",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.114.1"
+                }
+              },
+              "LambdaStack": {
+                "id": "LambdaStack",
+                "path": "DeployPowerLambda/LambdaStack/LambdaStack",
+                "children": {
+                  "MonitoringKey": {
+                    "id": "MonitoringKey",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStack/MonitoringKey",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStack/MonitoringKey/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::KMS::Key",
+                          "aws:cdk:cloudformation:props": {
+                            "description": "KMS Key for SNS Topic Encryption",
+                            "enableKeyRotation": true,
+                            "keyPolicy": {
+                              "Statement": [
+                                {
+                                  "Action": "kms:*",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "AWS": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":iam::437676487212:root"
+                                        ]
+                                      ]
+                                    }
+                                  },
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "tags": [
+                              {
+                                "key": "owner",
+                                "value": "monilranka"
+                              },
+                              {
+                                "key": "service",
+                                "value": "validateAddress"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_kms.CfnKey",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_kms.Key",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "LambdaStackalarms": {
+                    "id": "LambdaStackalarms",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                          "aws:cdk:cloudformation:props": {
+                            "displayName": "LambdaStackalarms",
+                            "kmsMasterKeyId": {
+                              "Fn::GetAtt": [
+                                "LambdaStackMonitoringKey91B3D6AC",
+                                "Arn"
+                              ]
+                            },
+                            "tags": [
+                              {
+                                "key": "owner",
+                                "value": "monilranka"
+                              },
+                              {
+                                "key": "service",
+                                "value": "validateAddress"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sns.CfnTopic",
+                          "version": "2.114.1"
+                        }
+                      },
+                      "Policy": {
+                        "id": "Policy",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms/Policy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms/Policy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::SNS::TopicPolicy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": "sns:Publish",
+                                      "Effect": "Allow",
+                                      "Principal": {
+                                        "Service": "cloudwatch.amazonaws.com"
+                                      },
+                                      "Resource": {
+                                        "Ref": "LambdaStackLambdaStackalarms3479467E"
+                                      },
+                                      "Sid": "0"
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "topics": [
+                                  {
+                                    "Ref": "LambdaStackLambdaStackalarms3479467E"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_sns.CfnTopicPolicy",
+                              "version": "2.114.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_sns.TopicPolicy",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_sns.Topic",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "MonitoringTopic": {
+                    "id": "MonitoringTopic",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStack/MonitoringTopic",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnOutput",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "LambdaStackLowFacade": {
+                    "id": "LambdaStackLowFacade",
+                    "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade",
+                    "children": {
+                      "LambdaStackLowFacade-Dashboards": {
+                        "id": "LambdaStackLowFacade-Dashboards",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStackLowFacade-Dashboards",
+                        "children": {
+                          "Dashboard": {
+                            "id": "Dashboard",
+                            "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStackLowFacade-Dashboards/Dashboard",
+                            "children": {
+                              "Resource": {
+                                "id": "Resource",
+                                "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStackLowFacade-Dashboards/Dashboard/Resource",
+                                "attributes": {
+                                  "aws:cdk:cloudformation:type": "AWS::CloudWatch::Dashboard",
+                                  "aws:cdk:cloudformation:props": {
+                                    "dashboardBody": {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "{\"start\":\"-PT8H\",\"periodOverride\":\"inherit\",\"widgets\":[{\"type\":\"text\",\"width\":24,\"height\":1,\"x\":0,\"y\":0,\"properties\":{\"markdown\":\"# Orders REST API Low Level Dashboard\"}},{\"type\":\"text\",\"width\":24,\"height\":1,\"x\":0,\"y\":1,\"properties\":{\"markdown\":\"### Lambda Function **[callExternalRestAPI](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          ")**\"}},{\"type\":\"metric\",\"width\":6,\"height\":5,\"x\":0,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"TPS\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[{\"label\":\"TPS\",\"expression\":\"FILL(requests,0) / PERIOD(requests)\"}],[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Invocations\",\"stat\":\"Sum\",\"visible\":false,\"id\":\"requests\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Rate\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":6,\"height\":5,\"x\":6,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Latency\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"P50\",\"stat\":\"p50\"}],[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"P90\",\"stat\":\"p90\"}],[\"AWS/Lambda\",\"Duration\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"P99\",\"stat\":\"p99\"}]],\"annotations\":{\"horizontal\":[{\"label\":\"P90 > 3000 for 3 datapoints within 15 minutes\",\"value\":3000,\"yAxis\":\"left\"}]},\"yAxis\":{\"left\":{\"min\":0,\"label\":\"ms\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":6,\"height\":5,\"x\":12,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors (rate)\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Faults (avg)\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Rate\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":6,\"height\":5,\"x\":18,\"y\":2,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Rates\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Throttles (avg)\"}],[\"AWS/Lambda\",\"ProvisionedConcurrencySpilloverInvocations\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Provisioned Concurrency Spillovers (avg)\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Rate\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":8,\"height\":5,\"x\":0,\"y\":7,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Invocations\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"Invocations\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Invocations\",\"stat\":\"Sum\"}],[\"AWS/Lambda\",\"Throttles\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Throttles\",\"stat\":\"Sum\"}],[\"AWS/Lambda\",\"ConcurrentExecutions\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Concurrent\",\"stat\":\"Maximum\"}],[\"AWS/Lambda\",\"ProvisionedConcurrencySpilloverInvocations\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Provisioned Concurrency Spillovers\",\"stat\":\"Sum\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Count\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":8,\"height\":5,\"x\":8,\"y\":7,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Iterator\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"IteratorAge\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Iterator Age\",\"stat\":\"Maximum\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"ms\",\"showUnits\":false}}}},{\"type\":\"metric\",\"width\":8,\"height\":5,\"x\":16,\"y\":7,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Errors\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Lambda\",\"Errors\",\"FunctionName\",\"",
+                                          {
+                                            "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                          },
+                                          "\",{\"label\":\"Faults\",\"stat\":\"Sum\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Count\",\"showUnits\":false}}}},{\"type\":\"text\",\"width\":24,\"height\":1,\"x\":0,\"y\":12,\"properties\":{\"markdown\":\"### Log Group **[",
+                                          {
+                                            "Fn::GetAtt": [
+                                              "LambdaStackvalidateAddressLogRetentionDB4DFAD3",
+                                              "LogGroupName"
+                                            ]
+                                          },
+                                          "](https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/",
+                                          {
+                                            "Fn::GetAtt": [
+                                              "LambdaStackvalidateAddressLogRetentionDB4DFAD3",
+                                              "LogGroupName"
+                                            ]
+                                          },
+                                          ")**\"}},{\"type\":\"log\",\"width\":18,\"height\":10,\"x\":0,\"y\":13,\"properties\":{\"view\":\"table\",\"title\":\"Find ERROR (limit = 10)\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"query\":\"SOURCE '",
+                                          {
+                                            "Fn::GetAtt": [
+                                              "LambdaStackvalidateAddressLogRetentionDB4DFAD3",
+                                              "LogGroupName"
+                                            ]
+                                          },
+                                          "' | fields @timestamp, @logStream, @message\\n| filter @message like /ERROR/\\n| sort @timestamp desc\\n| limit 10\"}},{\"type\":\"metric\",\"width\":6,\"height\":10,\"x\":18,\"y\":13,\"properties\":{\"view\":\"timeSeries\",\"title\":\"Incoming logs\",\"region\":\"",
+                                          {
+                                            "Ref": "AWS::Region"
+                                          },
+                                          "\",\"metrics\":[[\"AWS/Logs\",\"IncomingLogEvents\",\"LogGroupName\",\"",
+                                          {
+                                            "Fn::GetAtt": [
+                                              "LambdaStackvalidateAddressLogRetentionDB4DFAD3",
+                                              "LogGroupName"
+                                            ]
+                                          },
+                                          "\",{\"label\":\"Logs\",\"stat\":\"SampleCount\"}]],\"yAxis\":{\"left\":{\"min\":0,\"label\":\"Count\",\"showUnits\":false}}}}]}"
+                                        ]
+                                      ]
+                                    },
+                                    "dashboardName": "LambdaStackLowFacade"
+                                  }
+                                },
+                                "constructInfo": {
+                                  "fqn": "aws-cdk-lib.aws_cloudwatch.CfnDashboard",
+                                  "version": "2.114.1"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_cloudwatch.Dashboard",
+                              "version": "2.114.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "cdk-monitoring-constructs.DefaultDashboardFactory",
+                          "version": "7.1.0"
+                        }
+                      },
+                      "LambdaStack-callExternalRestAPI-Latency-P90-p90": {
+                        "id": "LambdaStack-callExternalRestAPI-Latency-P90-p90",
+                        "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStack-callExternalRestAPI-Latency-P90-p90",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStack-callExternalRestAPI-Latency-P90-p90/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::CloudWatch::Alarm",
+                              "aws:cdk:cloudformation:props": {
+                                "actionsEnabled": true,
+                                "alarmActions": [
+                                  {
+                                    "Ref": "LambdaStackLambdaStackalarms3479467E"
+                                  }
+                                ],
+                                "alarmDescription": "P90 latency is too high.",
+                                "alarmName": "LambdaStack-callExternalRestAPI-Latency-P90-p90",
+                                "comparisonOperator": "GreaterThanThreshold",
+                                "datapointsToAlarm": 3,
+                                "evaluationPeriods": 3,
+                                "metrics": [
+                                  {
+                                    "metricStat": {
+                                      "metric": {
+                                        "metricName": "Duration",
+                                        "namespace": "AWS/Lambda",
+                                        "dimensions": [
+                                          {
+                                            "name": "FunctionName",
+                                            "value": {
+                                              "Ref": "LambdaStackvalidateAddress4D6E275F"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "period": 300,
+                                      "stat": "p90"
+                                    },
+                                    "id": "m1",
+                                    "label": "P90",
+                                    "returnData": true
+                                  }
+                                ],
+                                "threshold": 3000,
+                                "treatMissingData": "notBreaching"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_cloudwatch.CfnAlarm",
+                              "version": "2.114.1"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "cdk-monitoring-constructs.MonitoringFacade",
+                      "version": "7.1.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "constructs.Construct",
+                  "version": "10.3.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a": {
+            "id": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a",
+            "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.114.1"
+                }
+              },
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "owner",
+                            "value": "monilranka"
+                          },
+                          {
+                            "key": "service",
+                            "value": "validateAddress"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.114.1"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "logs:PutRetentionPolicy",
+                                    "logs:DeleteRetentionPolicy"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+                            "roles": [
+                              {
+                                "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.114.1"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.114.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.114.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.114.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "DeployPowerLambda/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "DeployPowerLambda/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.114.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "DeployPowerLambda/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.114.1"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "DeployPowerLambda/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.114.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.114.1"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.114.1"
+    }
+  }
+}

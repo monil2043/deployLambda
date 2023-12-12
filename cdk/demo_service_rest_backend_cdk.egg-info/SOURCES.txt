@@ -1,0 +1,15 @@
+setup.py
+demo_service_rest_backend/__init__.py
+demo_service_rest_backend/api_construct.py
+demo_service_rest_backend/api_db_construct.py
+demo_service_rest_backend/constants.py
+demo_service_rest_backend/monitoring.py
+demo_service_rest_backend/service_stack.py
+demo_service_rest_backend/utils.py
+demo_service_rest_backend/configuration/__init__.py
+demo_service_rest_backend/configuration/configuration_construct.py
+demo_service_rest_backend/configuration/schema.py
+demo_service_rest_backend_cdk.egg-info/PKG-INFO
+demo_service_rest_backend_cdk.egg-info/SOURCES.txt
+demo_service_rest_backend_cdk.egg-info/dependency_links.txt
+demo_service_rest_backend_cdk.egg-info/top_level.txt

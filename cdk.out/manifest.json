@@ -1,0 +1,210 @@
+{
+  "version": "35.0.0",
+  "artifacts": {
+    "DeployPowerLambda.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "DeployPowerLambda.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "DeployPowerLambda": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://437676487212/us-east-1",
+      "properties": {
+        "templateFile": "DeployPowerLambda.template.json",
+        "terminationProtection": false,
+        "tags": {
+          "owner": "monilranka",
+          "service": "validateAddress"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::437676487212:role/cdk-hnb659fds-deploy-role-437676487212-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::437676487212:role/cdk-hnb659fds-cfn-exec-role-437676487212-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-437676487212-us-east-1/baaea57a78589b03dac4b961dce52e5b4ff0f0cdaed365f9610a601c2fd4da4a.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "DeployPowerLambda.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::437676487212:role/cdk-hnb659fds-lookup-role-437676487212-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "DeployPowerLambda.assets"
+      ],
+      "metadata": {
+        "/DeployPowerLambda": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "owner",
+                "Value": "monilranka"
+              },
+              {
+                "Key": "service",
+                "Value": "validateAddress"
+              }
+            ]
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfvalidateAddress/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfenv/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfenv9D2F1002"
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722"
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/ConfigurationProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversion84008A0F"
+          }
+        ],
+        "/DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment71A07": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionDeployment71A07A116FEA7"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/ServiceRoleArn/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackServiceRoleArn4C3B316A"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/ServiceRoleArn/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackServiceRoleArnDefaultPolicy2E72D1AA"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStackcommon/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackLambdaStackcommon0D28F4F6"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/validateAddress/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackvalidateAddress4D6E275F"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/validateAddress/LogRetention/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackvalidateAddressLogRetentionDB4DFAD3"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/validateAddress/EventInvokeConfig/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackvalidateAddressEventInvokeConfigA8968FC5"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/MonitoringKey/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackMonitoringKey91B3D6AC"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackLambdaStackalarms3479467E"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackalarms/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackLambdaStackalarmsPolicy2915B0ED"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/MonitoringTopic": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MonitoringTopic"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStackLowFacade-Dashboards/Dashboard/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackLambdaStackLowFacadeLambdaStackLowFacadeDashboardsDashboardBFEFA4F7"
+          }
+        ],
+        "/DeployPowerLambda/LambdaStack/LambdaStack/LambdaStackLowFacade/LambdaStack-callExternalRestAPI-Latency-P90-p90/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LambdaStackLambdaStackLowFacadeLambdaStackcallExternalRestAPILatencyP90p90FFA9179E"
+          }
+        ],
+        "/DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+          }
+        ],
+        "/DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+          }
+        ],
+        "/DeployPowerLambda/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+          }
+        ],
+        "/DeployPowerLambda/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/DeployPowerLambda/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/DeployPowerLambda/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "DeployPowerLambda"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
