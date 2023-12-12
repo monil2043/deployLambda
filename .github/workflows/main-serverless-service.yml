@@ -32,5 +32,8 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+    - name: Set up AWS profile
+      run:  export AWS_PROFILE=your-aws-profile
+
     - name: Deploy to AWS
       run: make deploy
