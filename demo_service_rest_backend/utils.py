@@ -1,7 +1,8 @@
-from aws_lambda_powertools import Logger,Tracer
-import requests
-import xml.etree.ElementTree as ET
 import xml.dom.minidom
+import xml.etree.ElementTree as ET
+
+import requests
+from aws_lambda_powertools import Logger, Tracer
 
 logger = Logger()
 tracer = Tracer()

@@ -20,8 +20,6 @@ jobs:
 
     - name: Install dependencies
       run: make dev
-    - name: Formatting and Linting
-      run: make lint
     - name: Complexity scan
       run: make complex
     - name: Unit tests

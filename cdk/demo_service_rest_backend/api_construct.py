@@ -9,6 +9,7 @@ from constructs import Construct
 import cdk.demo_service_rest_backend.constants as constants
 from cdk.demo_service_rest_backend.monitoring import CrudMonitoring
 
+
 class ApiConstruct(Construct):
 
     def __init__(self, scope: Construct, id_: str, appconfig_app_name: str) -> None:

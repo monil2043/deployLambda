@@ -1,9 +1,27 @@
-import requests
-import xml.etree.ElementTree as ET
-from aws_lambda_powertools import Logger, Metrics, Tracer
-import os
 import json
-from .utils import log_specific_value,create_correlation_id,log_request_received,log_response_received,handle_bad_request,handle_forbidden,handle_internal_server_error,handle_not_acceptable,handle_not_found,handle_success,handle_unauthorized,parse_and_print_json,parse_and_print_xml,call_api
+import os
+import xml.etree.ElementTree as ET
+
+import requests
+from aws_lambda_powertools import Logger, Metrics, Tracer
+
+from .utils import (
+    call_api,
+    create_correlation_id,
+    handle_bad_request,
+    handle_forbidden,
+    handle_internal_server_error,
+    handle_not_acceptable,
+    handle_not_found,
+    handle_success,
+    handle_unauthorized,
+    log_request_received,
+    log_response_received,
+    log_specific_value,
+    parse_and_print_json,
+    parse_and_print_xml,
+)
+
 USER_ID = '7NEURA45X5797'
 #os.environ.get('USER_ID')
 

@@ -1,7 +1,9 @@
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
+
 from demo_service_rest_backend.lambda_function import lambda_handler
-from demo_service_rest_backend.utils import log_request_received, call_api
+from demo_service_rest_backend.utils import call_api, log_request_received
+
 
 class TestLambdaHandler(unittest.TestCase):
 
