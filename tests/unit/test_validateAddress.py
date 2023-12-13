@@ -1,13 +1,15 @@
 import unittest
+import sys
+import os
 from unittest.mock import Mock, patch
-
-from demo_service_rest_backend.lambda_function import lambda_handler
-from demo_service_rest_backend.utils import call_api, log_request_received
-
-
+script_directory = os.path.dirname(os.path.abspath(__file__))
+new_path = script_directory.replace("tests/unit", "demo_service_rest_backend")
+new_path = os.path.abspath(new_path)
+sys.path.append(new_path)
+from lambda_function import lambda_handler
 class TestLambdaHandler(unittest.TestCase):
 
-    @patch('demo_service_rest_backend.lambda_function.call_api')
+    @patch('lambda_function.call_api')
     def test_lambda_handler_get_customer_profile_success(self, mock_call_api):
         
         mock_response = Mock()

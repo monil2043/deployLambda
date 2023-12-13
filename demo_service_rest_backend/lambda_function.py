@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 import requests
 from aws_lambda_powertools import Logger, Metrics, Tracer
 
-from .utils import (
+from commonDependency import (
     call_api,
     create_correlation_id,
     handle_bad_request,
@@ -21,9 +21,6 @@ from .utils import (
     parse_and_print_json,
     parse_and_print_xml,
 )
-
-USER_ID = '7NEURA45X5797'
-#os.environ.get('USER_ID')
 
 
 tracer = Tracer()
