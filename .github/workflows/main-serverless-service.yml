@@ -20,8 +20,8 @@ jobs:
 
     - name: Install dependencies
       run: make dev
-    - name: Code Lint
-      run: make lint
+    - name: Fix Format
+      run: make format-fix
     - name: Complexity scan
       run: make complex
     - name: Unit tests

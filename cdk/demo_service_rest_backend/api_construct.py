@@ -11,8 +11,7 @@ from cdk.demo_service_rest_backend.monitoring import CrudMonitoring
 
 class ApiConstruct(Construct):
 
-    def __init__(self, scope: Construct, id_: str,
-                 appconfig_app_name: str) -> None:
+    def __init__(self, scope: Construct, id_: str, appconfig_app_name: str) -> None:
         super().__init__(scope, id_)
         self.id_ = id_
         self.lambda_role = self._build_lambda_role()
