@@ -1,6 +1,7 @@
 name: Main Branch CI/CD
 
 on:
+  
   push:
     branches:
       - main
@@ -28,7 +29,12 @@ jobs:
       run: make unit
     - name: Run Coverage
       run: make coverage-tests
-    
+    - name: Codecov
+      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
+      with:
+        files: ./coverage.xml
+        fail_ci_if_error: false # optional (default = false)
+        verbose: false # optional (default = false)
 
     - name: Set up AWS credentials
       run: |
