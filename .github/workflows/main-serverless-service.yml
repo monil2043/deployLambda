@@ -20,6 +20,14 @@ jobs:
 
     - name: Install dependencies
       run: make dev
+    - name: pre commit
+      run: make pre-commit
+    - name: Formatting and Linting
+      run: make lint
+    - name: Complexity scan
+      run: make complex
+    - name: Unit tests
+      run: make unit
 
     - name: Set up AWS credentials
       run: |
