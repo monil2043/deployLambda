@@ -59,7 +59,7 @@ e2e:
 pr: deps pre-commit complex lint lint-docs unit deploy coverage-tests e2e
 
 coverage-tests:
-	poetry run pytest tests/unit tests/integration  --cov-config=.coveragerc --cov=demo_service_rest_backend --cov-report xml
+	poetry run pytest tests/unit  --cov-config=.coveragerc --cov=demo_service_rest_backend --cov-report xml
 
 deploy: build
 	npx cdk deploy --app="${PYTHON} ${PWD}/app.py" --require-approval=never --profile ${AWS_PROFILE}

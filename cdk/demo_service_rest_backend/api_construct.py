@@ -1,5 +1,4 @@
-from aws_cdk import CfnOutput, Duration, RemovalPolicy, aws_apigateway
-from aws_cdk import aws_dynamodb as dynamodb
+from aws_cdk import Duration, RemovalPolicy
 from aws_cdk import aws_iam as iam
 from aws_cdk import aws_lambda as _lambda
 from aws_cdk.aws_lambda_python_alpha import PythonLayerVersion
@@ -12,14 +11,12 @@ from cdk.demo_service_rest_backend.monitoring import CrudMonitoring
 
 class ApiConstruct(Construct):
 
-    def __init__(self, scope: Construct, id_: str, appconfig_app_name: str) -> None:
+    def __init__(self, scope: Construct, id_: str,
+                 appconfig_app_name: str) -> None:
         super().__init__(scope, id_)
         self.id_ = id_
-        #self.api_db = ApiDbConstruct(self, f'{id_}db')
         self.lambda_role = self._build_lambda_role()
         self.common_layer = self._build_common_layer()
-        #self.rest_api = self._build_api_gw()
-        #api_resource: aws_apigateway.Resource = self.rest_api.root.add_resource('api').add_resource(constants.GW_RESOURCE)
         self.create_address_validation = self._add_lambda_integration(self.lambda_role, appconfig_app_name)
         self.monitoring = CrudMonitoring(self, id_, [self.create_address_validation])
 
@@ -33,8 +30,8 @@ class ApiConstruct(Construct):
     #         cloud_watch_role=False,
     #     )
 
-        # CfnOutput(self, id=constants.APIGATEWAY, value=rest_api.url).override_logical_id(constants.APIGATEWAY)
-        # return rest_api
+    # CfnOutput(self, id=constants.APIGATEWAY, value=rest_api.url).override_logical_id(constants.APIGATEWAY)
+    # return rest_api
 
     def _build_lambda_role(self) -> iam.Role:
         return iam.Role(
@@ -51,14 +48,12 @@ class ApiConstruct(Construct):
                         )
                     ]),
                 'appconfig_full_access':  # Add the appConfig_fullAccess policy
-                    iam.PolicyDocument(statements=[
-                        iam.PolicyStatement(
-                            actions=['appconfig:*'],
-                            resources=['*'],
-                            effect=iam.Effect.ALLOW,
-                        )
-                    ]),
-                },
+                    iam.PolicyDocument(statements=[iam.PolicyStatement(
+                        actions=['appconfig:*'],
+                        resources=['*'],
+                        effect=iam.Effect.ALLOW,
+                    )]),
+            },
             managed_policies=[
                 iam.ManagedPolicy.from_aws_managed_policy_name(managed_policy_name=(f'service-role/{constants.LAMBDA_BASIC_EXECUTION_ROLE}'))
             ],
@@ -73,15 +68,14 @@ class ApiConstruct(Construct):
             removal_policy=RemovalPolicy.DESTROY,
         )
 
-    def _add_lambda_integration(self, role: iam.Role, appconfig_app_name: str,
-                                    ) -> _lambda.Function:
-
+    def _add_lambda_integration(
+        self,
+        role: iam.Role,
+        appconfig_app_name: str,
+    ) -> _lambda.Function:
 
         appconfig_layer = PythonLayerVersion.from_layer_version_arn(
-            self,
-            f'{self.id_}AppConfigLayer',
-            layer_version_arn='arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113'
-        )
+            self, f'{self.id_}AppConfigLayer', layer_version_arn='arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113')
         lambda_function = _lambda.Function(
             self,
             constants.CREATE_LAMBDA,
@@ -104,7 +98,7 @@ class ApiConstruct(Construct):
             retry_attempts=0,
             timeout=Duration.seconds(constants.API_HANDLER_LAMBDA_TIMEOUT),
             memory_size=constants.API_HANDLER_LAMBDA_MEMORY_SIZE,
-            layers=[self.common_layer,appconfig_layer],
+            layers=[self.common_layer, appconfig_layer],
             role=role,
             log_retention=RetentionDays.ONE_DAY,
         )

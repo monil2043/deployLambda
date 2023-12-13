@@ -20,10 +20,15 @@ jobs:
 
     - name: Install dependencies
       run: make dev
+    - name: Code Lint
+      run: make lint
     - name: Complexity scan
       run: make complex
     - name: Unit tests
       run: make unit
+    - name: Run Coverage
+      run: coverage-tests
+    
 
     - name: Set up AWS credentials
       run: |
