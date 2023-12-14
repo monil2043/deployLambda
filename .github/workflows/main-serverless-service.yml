@@ -35,13 +35,19 @@ jobs:
 
     - name: Check coverage percentage
       run: |
-        coverage=$(echo "${{ steps.coverage.outputs.coverage }}" | cut -d. -f1)
-        if [ "$coverage" -ge 41 ]; then
-          echo "Coverage is greater than or equal to 41%. Proceeding..."
+        coverage="${{ steps.coverage.outputs.coverage }}"
+        if [[ "$coverage" =~ ^[0-9]*$ ]]; then
+          if [ -n "$coverage" ] && [ "$coverage" -ge 50 ]; then
+            echo "Coverage is greater than or equal to 50%. Proceeding..."
+          else
+            echo "Coverage is less than 50%. Exiting..."
+            exit 1  # Exit with an error code to stop the workflow
+          fi
         else
-          echo "Coverage is less than 41%. Exiting..."
+          echo "Invalid coverage value. Exiting..."
           exit 1  # Exit with an error code to stop the workflow
         fi
+    
 
     - name: Set up AWS credentials
       run: |
