@@ -41,7 +41,7 @@ jobs:
 
     - name: Check coverage percentage
       run: |
-        coverage="${{ env.COVERAGE_RESULT}}"
+        coverage="${{ steps.coverage.outputs.coverage}}"
         if [[ "$coverage" =~ ^[0-9]*$ ]]; then
           if [ -n "$coverage" ]; then
             echo "Coverage is $coverage%. Proceeding..."
