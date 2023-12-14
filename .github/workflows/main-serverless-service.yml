@@ -42,9 +42,12 @@ jobs:
     - name: Check coverage percentage
       run: |
         coverage="${{ steps.coverage.outputs.coverage}}"
-        if [ -n "$coverage" ]; then
-            echo "Coverage is $coverage%. Proceeding..."
-            if [ "$(echo "$coverage >= 40" | bc)" -eq 1 ]; then
+        numeric_coverage=$(echo "$coverage" | sed 's/[^0-9.]*//g')
+        echo "Numberic coverage is $numeric_coverage"
+
+        if [ -n "$numeric_coverage" ]; then
+            echo "Coverage is $coverage. Proceeding..."
+            if [ "$(echo "$numeric_coverage >= 40" | bc)" -eq 1 ]; then
                 echo "Coverage is greater than or equal to 40%. Proceeding..."
             else
                 echo "Coverage is less than 40%. Exiting..."
