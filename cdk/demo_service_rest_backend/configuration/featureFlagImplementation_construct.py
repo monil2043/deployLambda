@@ -1,14 +1,10 @@
 from pathlib import Path
-import json
-
-import aws_cdk.aws_appconfig_alpha as appconfig
+from aws_cdk import aws_appconfig_alpha as appconfig
+#import aws_cdk.aws_appconfig_alpha as appconfig
 from aws_cdk import Duration, RemovalPolicy
 from constructs import Construct
 
-from cdk.demo_service_rest_backend.configuration.schema import FeatureFlagsConfiguration
-
-
-class ConfigurationStore(Construct):
+class ConfigurationStoreFF(Construct):
 
     def __init__(self, scope: Construct, id_: str, environment: str, service_name: str, configuration_name: str) -> None:
         """
@@ -26,24 +22,8 @@ class ConfigurationStore(Construct):
         """
         super().__init__(scope, id_)
 
-        json_content = {
-            "getCustomerProfileImplemented": {
-                "enabled": False
-            },
-            "performActionImplemented": {
-                "enabled": True
-            },
-            "featureFlagAttribute": {
-                "ffInt": 4,
-                "ffString": "English",
-                "enabled": True
-            }
-        }
-
-        json_content_str =json.dumps(json_content)
-
         configuration_str = self._get_and_validate_configuration(environment)
-        self.app_name = 'FeatureFlagImp'
+        self.app_name = 'featureFlagImp'
         #f'{id_}{service_name}'
         self.config_app = appconfig.Application(
             self,
@@ -76,24 +56,30 @@ class ConfigurationStore(Construct):
 
         self.config_dep_strategy.apply_removal_policy(RemovalPolicy.DESTROY)
 
-        self.config = appconfig.HostedConfiguration(
-            self,
-            f'{id_}version',
+        # Create Feature Flags
+        feature_flag_1 = appconfig.HostedConfiguration(
+            self, f'{id_}FeatureFlag1',
             application=self.config_app,
-            name=configuration_name,
-            content=appconfig.ConfigurationContent.from_inline(configuration_str),
-            type=appconfig.ConfigurationType.FREEFORM,
+            #configuration_profile=self.config_env,
+            content='{"FeatureFlag1": true}',
             deployment_strategy=self.config_dep_strategy,
-            deploy_to=[self.config_env],
+        )
+
+        feature_flag_2 = appconfig.HostedConfiguration(
+            self, f'{id_}FeatureFlag2',
+            application=self.config_app,
+            #configuration_profile=self.config_env,
+            content='{"FeatureFlag2": true}',
+            deployment_strategy=self.config_dep_strategy,
         )
 
         # workaround until https://github.com/aws/aws-cdk/issues/26804 is resolved
-        self.config.node.default_child.apply_removal_policy(RemovalPolicy.DESTROY)  # type: ignore
+        feature_flag_1.node.default_child.apply_removal_policy(RemovalPolicy.DESTROY)  # type: ignore
+        feature_flag_2.node.default_child.apply_removal_policy(RemovalPolicy.DESTROY)  # type: ignore
 
     def _get_and_validate_configuration(self, environment: str) -> str:
         current = Path(__file__).parent
         conf_filepath = current / (f'json/{environment}_configuration.json')
         configuration_str = conf_filepath.read_text()
         # validate configuration (check feature flags schema structure if exists)
-        FeatureFlagsConfiguration.model_validate_json(configuration_str)
         return configuration_str

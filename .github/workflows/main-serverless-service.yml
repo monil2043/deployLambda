@@ -29,12 +29,19 @@ jobs:
       run: make unit
     - name: Run Coverage
       run: make coverage-tests
-    - name: Codecov
-      uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
-      with:
-        files: ./coverage.xml
-        fail_ci_if_error: false # optional (default = false)
-        verbose: false # optional (default = false)
+    - name: Run coverage check
+      id: coverage
+      run: python coverage-percentage.py
+
+    - name: Check coverage percentage
+      run: |
+        coverage=$(echo "${{ steps.coverage.outputs.coverage }}" | cut -d. -f1)
+        if [ "$coverage" -ge 41 ]; then
+          echo "Coverage is greater than or equal to 41%. Proceeding..."
+        else
+          echo "Coverage is less than 41%. Exiting..."
+          exit 1  # Exit with an error code to stop the workflow
+        fi
 
     - name: Set up AWS credentials
       run: |

@@ -38,29 +38,29 @@
   }
  },
  "Resources": {
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23": {
+  "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B": {
    "Type": "AWS::AppConfig::Application",
    "Properties": {
-    "Name": "DeployPowerLambda-DynamicConfvalidateAddress"
+    "Name": "FeatureFlagImp"
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfvalidateAddress/Resource"
+    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/FeatureFlagImp/Resource"
    }
   },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfenv9D2F1002": {
+  "DeployPowerLambdaDynamicConfdevelopmentBBAB10FE": {
    "Type": "AWS::AppConfig::Environment",
    "Properties": {
     "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
     },
     "Name": "dev"
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfenv/Resource"
+    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/development/Resource"
    }
   },
   "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722": {
@@ -83,11 +83,11 @@
    "Type": "AWS::AppConfig::ConfigurationProfile",
    "Properties": {
     "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
     },
     "LocationUri": "hosted",
     "Name": "my_conf",
-    "Type": "AWS.Freeform"
+    "Type": "AWS.AppConfig.FeatureFlags"
    },
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/ConfigurationProfile"
@@ -97,7 +97,7 @@
    "Type": "AWS::AppConfig::HostedConfigurationVersion",
    "Properties": {
     "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
     },
     "ConfigurationProfileId": {
      "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
@@ -111,11 +111,11 @@
     "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Resource"
    }
   },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionDeployment71A07A116FEA7": {
+  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionDeployment000E48F92E1A1": {
    "Type": "AWS::AppConfig::Deployment",
    "Properties": {
     "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfvalidateAddress8DD9AA23"
+     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
     },
     "ConfigurationProfileId": {
      "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
@@ -127,11 +127,11 @@
      "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722"
     },
     "EnvironmentId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfenv9D2F1002"
+     "Ref": "DeployPowerLambdaDynamicConfdevelopmentBBAB10FE"
     }
    },
    "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment71A07"
+    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment000E4"
    }
   },
   "LambdaStackServiceRoleArn4C3B316A": {
@@ -244,15 +244,15 @@
     ],
     "Content": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
+     "S3Key": "59abc66da77cc026cbb646d8ab17106bef893472f7fa1df3d604ed7dc25b6d50.zip"
     }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Resource",
-    "aws:asset:path": "asset.c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08",
-    "aws:asset:is-bundled": false,
+    "aws:asset:path": "asset.59abc66da77cc026cbb646d8ab17106bef893472f7fa1df3d604ed7dc25b6d50",
+    "aws:asset:is-bundled": true,
     "aws:asset:property": "Content"
    }
   },
@@ -261,13 +261,13 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "89dbe2ff060567de12997dd6e477336b68426bc642d84d4dd0a46acbf5a50ffd.zip"
+     "S3Key": "e59b819c0ca0f89000e3fbdcd892d417387ccf488bfd6cf7d770961d36c76821.zip"
     },
     "Environment": {
      "Variables": {
       "POWERTOOLS_SERVICE_NAME": "validateAddress",
       "LOG_LEVEL": "DEBUG",
-      "CONFIGURATION_APP": "DeployPowerLambda-DynamicConfvalidateAddress",
+      "CONFIGURATION_APP": "FeatureFlagImp",
       "CONFIGURATION_ENV": "dev",
       "CONFIGURATION_NAME": "my_conf",
       "CONFIGURATION_MAX_AGE_MINUTES": "5",
@@ -312,7 +312,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/validateAddress/Resource",
-    "aws:asset:path": "asset.89dbe2ff060567de12997dd6e477336b68426bc642d84d4dd0a46acbf5a50ffd",
+    "aws:asset:path": "asset.e59b819c0ca0f89000e3fbdcd892d417387ccf488bfd6cf7d770961d36c76821",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
