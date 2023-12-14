@@ -42,23 +42,24 @@ jobs:
     - name: Check coverage percentage
       run: |
         coverage="${{ steps.coverage.outputs.coverage}}"
-        if [[ "$coverage" =~ ^[0-9]*$ ]]; then
-          if [ -n "$coverage" ]; then
-            echo "Coverage is $coverage%. Proceeding..."
-            if [ "$coverage" -ge 40 ]; then
-              echo "Coverage is greater than or equal to 40%. Proceeding..."
+        if [[ "$coverage" =~ ^[0-9]*\.?[0-9]+$ ]]; then
+            if [ -n "$coverage" ]; then
+                echo "Coverage is $coverage%. Proceeding..."
+                if (( $(echo "$coverage >= 40" | bc -l) )); then
+                    echo "Coverage is greater than or equal to 40%. Proceeding..."
+                else
+                    echo "Coverage is less than 40%. Exiting..."
+                    exit 1  # Exit with an error code to stop the workflow
+                fi
             else
-              echo "Coverage is less than 40%. Exiting..."
-              exit 1  # Exit with an error code to stop the workflow
+                echo "Coverage value is empty. Exiting..."
+                exit 1  # Exit with an error code to stop the workflow
             fi
-          else
-            echo "Coverage value is empty. Exiting..."
-            exit 1  # Exit with an error code to stop the workflow
-          fi
         else
-          echo "Invalid coverage value: $coverage. Exiting..."
-          exit 1  # Exit with an error code to stop the workflow
+            echo "Invalid coverage value: $coverage. Exiting..."
+            exit 1  # Exit with an error code to stop the workflow
         fi
+
     
     
 
