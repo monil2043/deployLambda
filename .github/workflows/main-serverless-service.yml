@@ -31,11 +31,17 @@ jobs:
       run: make coverage-tests
     - name: Run coverage check
       id: coverage
-      run: python coverage-percentage.py
+      run: python3 coverage-percentage.py
+      env:
+        COVERAGE_RESULT: ${{ steps.coverage.outputs.coverage }}
+
+    - name: Display coverage
+      run: |
+          echo "Coverage percentage: ${{ env.COVERAGE_RESULT }}"
 
     - name: Check coverage percentage
       run: |
-        coverage="${{ steps.coverage.outputs.coverage_percentage }}"
+        coverage="${{ env.COVERAGE_RESULT}}"
         if [[ "$coverage" =~ ^[0-9]*$ ]]; then
           if [ -n "$coverage" ]; then
             echo "Coverage is $coverage%. Proceeding..."
