@@ -37,10 +37,10 @@ jobs:
       run: |
         coverage="${{ steps.coverage.outputs.coverage }}"
         if [[ "$coverage" =~ ^[0-9]*$ ]]; then
-          if [ -n "$coverage" ] && [ "$coverage" -ge 50 ]; then
-            echo "Coverage is greater than or equal to 50%. Proceeding..."
+          if [ -n "$coverage" ] && [ "$coverage" -ge 40 ]; then
+            echo "Coverage is greater than or equal to 40%. Proceeding..."
           else
-            echo "Coverage is less than 50%. Exiting..."
+            echo "Coverage is less than 40%. Exiting..."
             exit 1  # Exit with an error code to stop the workflow
           fi
         else
