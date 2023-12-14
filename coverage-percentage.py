@@ -5,9 +5,9 @@ def get_coverage_percentage(xml_file):
     root = tree.getroot()
 
     # Assuming the coverage percentage is stored in the line-rate attribute
-    coverage_percentage = float(root.attrib.get('line-rate', 0)) * 100
+    coverage = float(root.attrib.get('line-rate', 0)) * 100
 
-    return coverage_percentage
+    return coverage
 
 # Example usage:
 xml_file_path = 'coverage.xml'  # Update with the actual path to your coverage report file
