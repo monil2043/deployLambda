@@ -31,13 +31,13 @@ jobs:
       run: make coverage-tests
     - name: Run coverage check
       id: coverage
-      run: python3 coverage-percentage.py
+      run: echo "::set-output name=coverage::$(python coverage-percentage.py)"
       env:
         COVERAGE_RESULT: ${{ steps.coverage.outputs.coverage }}
 
     - name: Display coverage
       run: |
-          echo "Coverage percentage: ${{ env.COVERAGE_RESULT }}"
+        echo "Coverage percentage: ${{ steps.coverage.outputs.coverage }}"
 
     - name: Check coverage percentage
       run: |
