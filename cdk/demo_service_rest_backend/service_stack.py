@@ -4,7 +4,7 @@ from constructs import Construct
 
 from cdk.demo_service_rest_backend.api_construct import ApiConstruct
 from cdk.demo_service_rest_backend.configuration.configuration_construct import ConfigurationStore
-from cdk.demo_service_rest_backend.constants import CONFIGURATION_NAME, ENVIRONMENT, OWNER_TAG, SERVICE_NAME, SERVICE_NAME_TAG
+from cdk.demo_service_rest_backend.constants import OWNER_TAG, SERVICE_NAME, SERVICE_NAME_TAG
 from cdk.demo_service_rest_backend.utils import get_construct_name, get_username
 
 

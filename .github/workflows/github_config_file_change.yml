@@ -1,0 +1,27 @@
+name: File Change Workflow
+
+on:
+  push:
+    paths:
+      - 'github_config/**'  # Trigger on changes in the github_config folder
+
+jobs:
+  print_file_content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print file content
+        run: |
+          # Get the list of changed files
+          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+          # Check if any file in github_config folder is changed
+          if echo "$changed_files" | grep -q '^github_config/'; then
+            # Print the content of a.json
+            cat github_config/a.json
+          else
+            echo "No changes in the github_config folder."
+          fi
