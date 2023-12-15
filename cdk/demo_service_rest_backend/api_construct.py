@@ -11,12 +11,12 @@ from cdk.demo_service_rest_backend.monitoring import CrudMonitoring
 
 class ApiConstruct(Construct):
 
-    def __init__(self, scope: Construct, id_: str, appconfig_app_name: str) -> None:
+    def __init__(self, scope: Construct, id_: str) -> None:
         super().__init__(scope, id_)
         self.id_ = id_
         self.lambda_role = self._build_lambda_role()
         self.common_layer = self._build_common_layer()
-        self.create_address_validation = self._add_lambda_integration(self.lambda_role, appconfig_app_name)
+        self.create_address_validation = self._add_lambda_integration(self.lambda_role)
         self.monitoring = CrudMonitoring(self, id_, [self.create_address_validation])
 
     # def _build_api_gw(self) -> aws_apigateway.RestApi:
@@ -70,7 +70,6 @@ class ApiConstruct(Construct):
     def _add_lambda_integration(
         self,
         role: iam.Role,
-        appconfig_app_name: str,
     ) -> _lambda.Function:
 
         appconfig_layer = PythonLayerVersion.from_layer_version_arn(
@@ -85,7 +84,7 @@ class ApiConstruct(Construct):
             environment={
                 constants.POWERTOOLS_SERVICE_NAME: constants.SERVICE_NAME,  # for logger, tracer and metrics
                 constants.POWER_TOOLS_LOG_LEVEL: 'DEBUG',  # for logger
-                'CONFIGURATION_APP': appconfig_app_name,  # for feature flags
+                #'CONFIGURATION_APP': appconfig_app_name,  # for feature flags
                 'CONFIGURATION_ENV': constants.ENVIRONMENT,  # for feature flags
                 'CONFIGURATION_NAME': constants.CONFIGURATION_NAME,  # for feature flags
                 'CONFIGURATION_MAX_AGE_MINUTES': constants.CONFIGURATION_MAX_AGE_MINUTES,  # for feature flags
