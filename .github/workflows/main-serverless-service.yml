@@ -1,0 +1,81 @@
+name: Main Branch CI/CD
+
+on:
+  
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'github_config/**' 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: make dev
+    - name: Fix Format
+      run: make format-fix
+    - name: Complexity scan
+      run: make complex
+    - name: Unit tests
+      run: make unit
+    - name: Run Coverage
+      run: make coverage-tests
+    - name: Run coverage check
+      id: coverage
+      run: echo "::set-output name=coverage::$(python coverage-percentage.py)"
+      env:
+        COVERAGE_RESULT: ${{ steps.coverage.outputs.coverage }}
+
+    - name: Display coverage
+      run: |
+        echo "Coverage percentage: ${{ steps.coverage.outputs.coverage }}"
+
+    - name: Check coverage percentage
+      run: |
+        coverage="${{ steps.coverage.outputs.coverage}}"
+        numeric_coverage=$(echo "$coverage" | sed 's/[^0-9.]*//g')
+        echo "Numberic coverage is $numeric_coverage"
+
+        if [ -n "$numeric_coverage" ]; then
+            echo "Coverage is $coverage. Proceeding..."
+            if [ "$(echo "$numeric_coverage >= 40" | bc)" -eq 1 ]; then
+                echo "Coverage is greater than or equal to 40%. Proceeding..."
+            else
+                echo "Coverage is less than 40%. Exiting..."
+                exit 1  # Exit with an error code to stop the workflow
+            fi
+        else
+            echo "Coverage value is empty. Exiting..."
+            exit 1  # Exit with an error code to stop the workflow
+        fi
+
+
+    
+    
+
+    - name: Set up AWS credentials
+      run: |
+        mkdir -p ~/.aws
+        touch ~/.aws/credentials
+        echo "[your-aws-profile]
+        aws_access_key_id = ${AWS_ACCESS_KEY_ID}
+        aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
+      env: 
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Deploy to AWS
+      run: make deploy
+      env:
+        AWS_PROFILE: your-aws-profile
