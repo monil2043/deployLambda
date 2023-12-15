@@ -91,7 +91,8 @@ class ApiConstruct(Construct):
                 'CONFIGURATION_MAX_AGE_MINUTES': constants.CONFIGURATION_MAX_AGE_MINUTES,  # for feature flags
                 #'REST_API': 'https://apibaseurl/api',  # for env vars example
                 'ROLE_ARN': 'arn:partition:service:region:account-id:resource-type:resource-id',  # for env vars example
-                'USER_ID': constants.USER_ID
+                'FEATURE_FLAG_URL': constants.FEATURE_FLAG_URL,
+                'CUSTOMER_PROFILE_URL': constants.CUSTOMER_PROFILE_URL
             },
             tracing=_lambda.Tracing.ACTIVE,
             retry_attempts=0,

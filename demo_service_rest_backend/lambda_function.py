@@ -1,9 +1,6 @@
 import json
 import os
-import xml.etree.ElementTree as ET
-import requests
 from aws_lambda_powertools import Logger, Metrics, Tracer
-import cdk.demo_service_rest_backend.constants as constants
 from commonDependency import (
     call_api,
     create_correlation_id,
@@ -23,8 +20,8 @@ from commonDependency import (
 tracer = Tracer()
 logger = Logger()
 metrics = Metrics()
-FEATURE_FLAG_URL = constants.FEATURE_FLAG_URL
-CUSTOMER_PROFILE_URL = constants.CUSTOMER_PROFILE_URL
+FEATURE_FLAG_URL = os.environ.get('FEATURE_FLAG_URL')
+CUSTOMER_PROFILE_URL = os.environ.get('CUSTOMER_PROFILE_URL')
 
 
 @tracer.capture_lambda_handler(capture_response=False)
