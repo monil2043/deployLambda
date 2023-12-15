@@ -15,8 +15,8 @@ jobs:
 
       - name: Print file names
         run: |
-          # Get the list of changed files
-          changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          # Get the list of file names in the github_config folder
+          file_names=$(ls github_config)
 
-          # Print the names of changed files in the github_config folder
-          echo "$changed_files" | grep '^github_config/'
+          # Print the names of files in the github_config folder
+          echo "$file_names"
