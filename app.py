@@ -16,6 +16,7 @@ my_stack = ServiceStack(
     id='DeployPowerLambda',
     env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account), region=os.environ.get('AWS_DEFAULT_REGION', region)),
     is_production_env=True if environment == 'production' else False,
+    ssmParamName = '/mercury/backendIntegration/appConfigUrl'
 )
 
 app.synth()

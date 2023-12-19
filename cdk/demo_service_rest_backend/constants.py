@@ -26,5 +26,6 @@ ENVIRONMENT = 'dev'
 CONFIGURATION_NAME = 'my_conf'
 CONFIGURATION_MAX_AGE_MINUTES = '5'  # time to store app config conf in the cache before refetching it
 USER_ID = '7NEURA45X5797'
+LAYER_FOLDER = 'dependencies'
 FEATURE_FLAG_URL='http://localhost:2772/applications/FeatureFlagImplementation/environments/dev/configurations/featureFlagStore'
 CUSTOMER_PROFILE_URL='https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234'

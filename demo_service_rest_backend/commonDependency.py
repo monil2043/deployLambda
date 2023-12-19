@@ -1,7 +1,8 @@
+import inspect
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
-import inspect
 from functools import wraps
+
 import requests
 from aws_lambda_powertools import Logger, Tracer
 

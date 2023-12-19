@@ -1,38 +1,37 @@
 from aws_cdk import Duration, RemovalPolicy
 from aws_cdk import aws_iam as iam
 from aws_cdk import aws_lambda as _lambda
+from aws_cdk.aws_lambda import LayerVersion
 from aws_cdk.aws_lambda_python_alpha import PythonLayerVersion
 from aws_cdk.aws_logs import RetentionDays
 from constructs import Construct
+from aws_cdk import aws_ssm as ssm
 
 import cdk.demo_service_rest_backend.constants as constants
 from cdk.demo_service_rest_backend.monitoring import CrudMonitoring
 
 
+
+
+
 class ApiConstruct(Construct):
 
-    def __init__(self, scope: Construct, id_: str) -> None:
+    def __init__(self, scope: Construct, id_: str, ssmParamName: str) -> None:
         super().__init__(scope, id_)
         self.id_ = id_
+        self.my_ssm_parameter_value = ssm.StringParameter.value_for_string_parameter(
+            self,
+            ssmParamName
+        )
         self.lambda_role = self._build_lambda_role()
         self.common_layer = self._build_common_layer()
         self.create_address_validation = self._add_lambda_integration(self.lambda_role)
         self.monitoring = CrudMonitoring(self, id_, [self.create_address_validation])
-
-    # def _build_api_gw(self) -> aws_apigateway.RestApi:
-    #     rest_api: aws_apigateway.RestApi = aws_apigateway.RestApi(
-    #         self,
-    #         'service-rest-api',
-    #         rest_api_name='Service Rest API',
-    #         description='This service handles /api/orders requests',
-    #         deploy_options=aws_apigateway.StageOptions(throttling_rate_limit=2, throttling_burst_limit=10),
-    #         cloud_watch_role=False,
-    #     )
-
-    # CfnOutput(self, id=constants.APIGATEWAY, value=rest_api.url).override_logical_id(constants.APIGATEWAY)
-    # return rest_api
+        
 
     def _build_lambda_role(self) -> iam.Role:
+
+
         return iam.Role(
             self,
             constants.SERVICE_ROLE_ARN,
@@ -52,28 +51,34 @@ class ApiConstruct(Construct):
                         resources=['*'],
                         effect=iam.Effect.ALLOW,
                     )]),
+                'ssm_parameter_access':  # New policy for SSM Parameter Store access
+                    iam.PolicyDocument(statements=[iam.PolicyStatement(
+                        actions=['ssm:GetParameter'],
+                        resources=['*'],  # Specify the ARN of the SSM parameter
+                        effect=iam.Effect.ALLOW,
+                )]),
             },
             managed_policies=[
                 iam.ManagedPolicy.from_aws_managed_policy_name(managed_policy_name=(f'service-role/{constants.LAMBDA_BASIC_EXECUTION_ROLE}'))
             ],
         )
-
-    def _build_common_layer(self) -> PythonLayerVersion:
-        return PythonLayerVersion(
-            self,
+    def _build_common_layer(self) -> LayerVersion:
+        return LayerVersion(self,
             f'{self.id_}{constants.LAMBDA_LAYER_NAME}',
-            entry=constants.COMMON_LAYER_BUILD_FOLDER,
+            #entry= constants.COMMON_LAYER_BUILD_FOLDER,
+            code=_lambda.Code.from_asset(constants.LAYER_FOLDER),
             compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
-            removal_policy=RemovalPolicy.DESTROY,
-        )
+            removal_policy=RemovalPolicy.DESTROY,)
 
     def _add_lambda_integration(
         self,
         role: iam.Role,
     ) -> _lambda.Function:
+        
+        ssm_value = self.my_ssm_parameter_value
 
-        appconfig_layer = PythonLayerVersion.from_layer_version_arn(
-            self, f'{self.id_}AppConfigLayer', layer_version_arn='arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113')
+        appconfig_layer = LayerVersion.from_layer_version_arn(
+             self, f'{self.id_}AppConfigLayer', layer_version_arn='arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113')
         lambda_function = _lambda.Function(
             self,
             constants.CREATE_LAMBDA,
@@ -91,7 +96,8 @@ class ApiConstruct(Construct):
                 #'REST_API': 'https://apibaseurl/api',  # for env vars example
                 'ROLE_ARN': 'arn:partition:service:region:account-id:resource-type:resource-id',  # for env vars example
                 'FEATURE_FLAG_URL': constants.FEATURE_FLAG_URL,
-                'CUSTOMER_PROFILE_URL': constants.CUSTOMER_PROFILE_URL
+                'CUSTOMER_PROFILE_URL': constants.CUSTOMER_PROFILE_URL,
+                'MY_PARAMETER_ENV_VAR': ssm_value
             },
             tracing=_lambda.Tracing.ACTIVE,
             retry_attempts=0,

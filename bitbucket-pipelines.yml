@@ -1,0 +1,38 @@
+image: python:3.12
+
+pipelines:
+  default:
+    - step:
+        name: Set up Python
+        script:
+          - python3 --version
+          - apt-get update
+          - apt-get install -y npm curl sudo
+          - apt-get install -y docker.io
+          - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+          - source ~/.nvm/nvm.sh
+          - nvm install 16
+          - nvm use 16
+          - node -v
+          # Install pip
+          - apt-get install -y python3-pip
+          - docker --version
+
+          # Start adding make steps
+          - make dev
+          - mkdir -p ~/.aws
+          
+          
+          # Create and populate AWS credentials file
+          - echo "[your-aws-profile]" > ~/.aws/credentials
+          - echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+          - echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+
+          # Display the contents of the AWS credentials file for verification
+          - cat ~/.aws/credentials
+          - export AWS_PROFILE=your-aws-profile
+          - sudo service docker start
+          - sleep 5
+          - sudo service docker status
+          - export DOCKER_HOST=tcp://localhost:2375
+          - make deploy

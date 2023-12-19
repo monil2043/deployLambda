@@ -1,5 +1,5 @@
-from pathlib import Path
 import json
+from pathlib import Path
 
 import aws_cdk.aws_appconfig_alpha as appconfig
 from aws_cdk import Duration, RemovalPolicy
