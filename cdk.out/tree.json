@@ -8,174 +8,6 @@
         "id": "DeployPowerLambda",
         "path": "DeployPowerLambda",
         "children": {
-          "DeployPowerLambda-DynamicConf": {
-            "id": "DeployPowerLambda-DynamicConf",
-            "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf",
-            "children": {
-              "FeatureFlagImp": {
-                "id": "FeatureFlagImp",
-                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/FeatureFlagImp",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/FeatureFlagImp/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Application",
-                      "aws:cdk:cloudformation:props": {
-                        "name": "FeatureFlagImp"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnApplication",
-                      "version": "2.114.1"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-appconfig-alpha.Application",
-                  "version": "2.114.1-alpha.0"
-                }
-              },
-              "development": {
-                "id": "development",
-                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/development",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/development/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Environment",
-                      "aws:cdk:cloudformation:props": {
-                        "applicationId": {
-                          "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-                        },
-                        "name": "dev"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnEnvironment",
-                      "version": "2.114.1"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-appconfig-alpha.Environment",
-                  "version": "2.114.1-alpha.0"
-                }
-              },
-              "DeployPowerLambda-DynamicConfzero": {
-                "id": "DeployPowerLambda-DynamicConfzero",
-                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::DeploymentStrategy",
-                      "aws:cdk:cloudformation:props": {
-                        "deploymentDurationInMinutes": 0,
-                        "finalBakeTimeInMinutes": 0,
-                        "growthFactor": 100,
-                        "growthType": "LINEAR",
-                        "name": "DeployPowerLambda-DeployPoweyPowerLambdaDynamicConfzero-AA48B5EB",
-                        "replicateTo": "NONE"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnDeploymentStrategy",
-                      "version": "2.114.1"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-appconfig-alpha.DeploymentStrategy",
-                  "version": "2.114.1-alpha.0"
-                }
-              },
-              "DeployPowerLambda-DynamicConfversion": {
-                "id": "DeployPowerLambda-DynamicConfversion",
-                "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion",
-                "children": {
-                  "ConfigurationProfile": {
-                    "id": "ConfigurationProfile",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/ConfigurationProfile",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::ConfigurationProfile",
-                      "aws:cdk:cloudformation:props": {
-                        "applicationId": {
-                          "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-                        },
-                        "locationUri": "hosted",
-                        "name": "my_conf",
-                        "type": "AWS.AppConfig.FeatureFlags"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnConfigurationProfile",
-                      "version": "2.114.1"
-                    }
-                  },
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::HostedConfigurationVersion",
-                      "aws:cdk:cloudformation:props": {
-                        "applicationId": {
-                          "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-                        },
-                        "configurationProfileId": {
-                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
-                        },
-                        "content": "{\n    \"features\": {\n        \"feature1\": {\n            \"default\": false,\n            \"rules\": {\n                \"enable feature 1 when a given key has a specified value\": {\n                    \"when_match\": true,\n                    \"conditions\": [\n                        {\n                            \"action\": \"EQUALS\",\n                            \"key\": \"customer_name\",\n                            \"value\": \"Good Customer\"\n                        }\n                    ]\n                }\n            }\n        },\n        \"ten_percent_off_campaign\": {\n            \"default\": true\n        }\n    },\n    \"countries\": [\n        \"ISRAEL\",\n        \"USA\"\n    ]\n}",
-                        "contentType": "application/octet-stream"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnHostedConfigurationVersion",
-                      "version": "2.114.1"
-                    }
-                  },
-                  "Deployment000E4": {
-                    "id": "Deployment000E4",
-                    "path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment000E4",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::AppConfig::Deployment",
-                      "aws:cdk:cloudformation:props": {
-                        "applicationId": {
-                          "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-                        },
-                        "configurationProfileId": {
-                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
-                        },
-                        "configurationVersion": {
-                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversion84008A0F"
-                        },
-                        "deploymentStrategyId": {
-                          "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722"
-                        },
-                        "environmentId": {
-                          "Ref": "DeployPowerLambdaDynamicConfdevelopmentBBAB10FE"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_appconfig.CfnDeployment",
-                      "version": "2.114.1"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-appconfig-alpha.HostedConfiguration",
-                  "version": "2.114.1-alpha.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "constructs.Construct",
-              "version": "10.3.0"
-            }
-          },
           "LambdaStack": {
             "id": "LambdaStack",
             "path": "DeployPowerLambda/LambdaStack",
@@ -361,7 +193,7 @@
                         ],
                         "content": {
                           "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-                          "s3Key": "59abc66da77cc026cbb646d8ab17106bef893472f7fa1df3d604ed7dc25b6d50.zip"
+                          "s3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
                         }
                       }
                     },
@@ -422,18 +254,18 @@
                       "aws:cdk:cloudformation:props": {
                         "code": {
                           "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-                          "s3Key": "e59b819c0ca0f89000e3fbdcd892d417387ccf488bfd6cf7d770961d36c76821.zip"
+                          "s3Key": "d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad.zip"
                         },
                         "environment": {
                           "variables": {
                             "POWERTOOLS_SERVICE_NAME": "validateAddress",
                             "LOG_LEVEL": "DEBUG",
-                            "CONFIGURATION_APP": "FeatureFlagImp",
                             "CONFIGURATION_ENV": "dev",
                             "CONFIGURATION_NAME": "my_conf",
                             "CONFIGURATION_MAX_AGE_MINUTES": "5",
                             "ROLE_ARN": "arn:partition:service:region:account-id:resource-type:resource-id",
-                            "USER_ID": "7NEURA45X5797"
+                            "FEATURE_FLAG_URL": "http://localhost:2772/applications/FeatureFlagImplementation/environments/dev/configurations/featureFlagStore",
+                            "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234"
                           }
                         },
                         "functionName": "callExternalRestAPI",

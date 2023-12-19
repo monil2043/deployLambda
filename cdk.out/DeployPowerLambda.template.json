@@ -38,102 +38,6 @@
   }
  },
  "Resources": {
-  "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B": {
-   "Type": "AWS::AppConfig::Application",
-   "Properties": {
-    "Name": "FeatureFlagImp"
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/FeatureFlagImp/Resource"
-   }
-  },
-  "DeployPowerLambdaDynamicConfdevelopmentBBAB10FE": {
-   "Type": "AWS::AppConfig::Environment",
-   "Properties": {
-    "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-    },
-    "Name": "dev"
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/development/Resource"
-   }
-  },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722": {
-   "Type": "AWS::AppConfig::DeploymentStrategy",
-   "Properties": {
-    "DeploymentDurationInMinutes": 0,
-    "FinalBakeTimeInMinutes": 0,
-    "GrowthFactor": 100,
-    "GrowthType": "LINEAR",
-    "Name": "DeployPowerLambda-DeployPoweyPowerLambdaDynamicConfzero-AA48B5EB",
-    "ReplicateTo": "NONE"
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfzero/Resource"
-   }
-  },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF": {
-   "Type": "AWS::AppConfig::ConfigurationProfile",
-   "Properties": {
-    "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-    },
-    "LocationUri": "hosted",
-    "Name": "my_conf",
-    "Type": "AWS.AppConfig.FeatureFlags"
-   },
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/ConfigurationProfile"
-   }
-  },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversion84008A0F": {
-   "Type": "AWS::AppConfig::HostedConfigurationVersion",
-   "Properties": {
-    "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-    },
-    "ConfigurationProfileId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
-    },
-    "Content": "{\n    \"features\": {\n        \"feature1\": {\n            \"default\": false,\n            \"rules\": {\n                \"enable feature 1 when a given key has a specified value\": {\n                    \"when_match\": true,\n                    \"conditions\": [\n                        {\n                            \"action\": \"EQUALS\",\n                            \"key\": \"customer_name\",\n                            \"value\": \"Good Customer\"\n                        }\n                    ]\n                }\n            }\n        },\n        \"ten_percent_off_campaign\": {\n            \"default\": true\n        }\n    },\n    \"countries\": [\n        \"ISRAEL\",\n        \"USA\"\n    ]\n}",
-    "ContentType": "application/octet-stream"
-   },
-   "UpdateReplacePolicy": "Delete",
-   "DeletionPolicy": "Delete",
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Resource"
-   }
-  },
-  "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionDeployment000E48F92E1A1": {
-   "Type": "AWS::AppConfig::Deployment",
-   "Properties": {
-    "ApplicationId": {
-     "Ref": "DeployPowerLambdaDynamicConfFeatureFlagImpF659A66B"
-    },
-    "ConfigurationProfileId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversionConfigurationProfile3609F9DF"
-    },
-    "ConfigurationVersion": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfversion84008A0F"
-    },
-    "DeploymentStrategyId": {
-     "Ref": "DeployPowerLambdaDynamicConfDeployPowerLambdaDynamicConfzero3528F722"
-    },
-    "EnvironmentId": {
-     "Ref": "DeployPowerLambdaDynamicConfdevelopmentBBAB10FE"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "DeployPowerLambda/DeployPowerLambda-DynamicConf/DeployPowerLambda-DynamicConfversion/Deployment000E4"
-   }
-  },
   "LambdaStackServiceRoleArn4C3B316A": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -244,15 +148,15 @@
     ],
     "Content": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "59abc66da77cc026cbb646d8ab17106bef893472f7fa1df3d604ed7dc25b6d50.zip"
+     "S3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
     }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Resource",
-    "aws:asset:path": "asset.59abc66da77cc026cbb646d8ab17106bef893472f7fa1df3d604ed7dc25b6d50",
-    "aws:asset:is-bundled": true,
+    "aws:asset:path": "asset.c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08",
+    "aws:asset:is-bundled": false,
     "aws:asset:property": "Content"
    }
   },
@@ -261,18 +165,18 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "e59b819c0ca0f89000e3fbdcd892d417387ccf488bfd6cf7d770961d36c76821.zip"
+     "S3Key": "d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad.zip"
     },
     "Environment": {
      "Variables": {
       "POWERTOOLS_SERVICE_NAME": "validateAddress",
       "LOG_LEVEL": "DEBUG",
-      "CONFIGURATION_APP": "FeatureFlagImp",
       "CONFIGURATION_ENV": "dev",
       "CONFIGURATION_NAME": "my_conf",
       "CONFIGURATION_MAX_AGE_MINUTES": "5",
       "ROLE_ARN": "arn:partition:service:region:account-id:resource-type:resource-id",
-      "USER_ID": "7NEURA45X5797"
+      "FEATURE_FLAG_URL": "http://localhost:2772/applications/FeatureFlagImplementation/environments/dev/configurations/featureFlagStore",
+      "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234"
      }
     },
     "FunctionName": "callExternalRestAPI",
@@ -312,7 +216,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/validateAddress/Resource",
-    "aws:asset:path": "asset.e59b819c0ca0f89000e3fbdcd892d417387ccf488bfd6cf7d770961d36c76821",
+    "aws:asset:path": "asset.d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -749,7 +653,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/21R227CMAz9Ft7TsMI+YNymTUMaKtNekUlDmzVNolxAVdV/X5IW6CZeYp9j2Tn2meE0fcZtOoGLSUheJZwdcbu3QCrkqUMLShEpTqzA7eokFkpxRsAyKZCHG3FmWoqaChvgmioum4D2VoOlRRPYVWx3OnbttDwxTgP/Jo2l+Z/qN9VmGH2f1SEGNW4z2bfFuJNeRpzeZx0y8wMYQ63BixA8xktHKmqXYCjiUB9ziCtsoaH6+tGrE+S6zC3fnP2v7+IsK9qri6v+JzvEZWHwVhYZtb4WOqva4PaDRmE+eFXCE19SMRKoPonvfYER7BDh0uUXsKTE7RpMeZSg83iOG1hw0HWgYtJ1KKNGOk0oiot76womouRbweefzirnT5kmwFUJ+GnyMjg+DfFu81Bvx06PbX7g8QMju+HiiWpsKcUwdBfB2AAvvyenc5zOvKofw1iinT9nTXHWx19ponQupAIAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/2VQ227CMAz9lr2nZoV9wIBt0jSkoW7aKzKpabOmSdUkIBTl35ekCJD2knOxHdlnDmX5BL58wJMpeN0VUuzBf1nkHYvWzgvswVdaElsfVMatloKfk5xYYGaxQ2PIGlgmiBpWjndkV2iISez3NYKPAxs80/hDoxFasTenuE0kFq789UjKvquj7mit1UE0qfrPDEzqxsBGNxXZWEuTXW/Af1BeLELcSkXjWw+CJ2si+b0dcCcD41K7+oSWt+Bf0LR7jWOdum5iKXHsk5VJCKwio93IieXDY2yNUHnlayHyT2cHZwMrC5RDi/D48HxJe5ZwyqcYzrbV6tKyzeI+rsAmb7aAch6/+DVCFKOLt/cE1YR/ieYRys0BAAA="
    },
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/CDKMetadata/Default"
