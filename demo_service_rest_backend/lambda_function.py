@@ -22,14 +22,13 @@ tracer = Tracer()
 logger = Logger()
 metrics = Metrics()
 FEATURE_FLAG_URL = os.environ.get('MY_PARAMETER_ENV_VAR')
-#CUSTOMER_PROFILE_URL = os.environ.get('CUSTOMER_PROFILE_URL')
 
 def isFeatureEnabled():
     # Call feature flag to get down the values noted
     featureFlagResponseJsonContent = call_api(FEATURE_FLAG_URL, 'GET')[1]
     config_data = json.loads(featureFlagResponseJsonContent)
-    performActionImplemented = config_data.get('performActionImplemented', {}).get('enabled', True)
-    customerProfileBackendURL = config_data.get('featureFlagAttribute', {}).get('backendUrl', '')
+    performActionImplemented = config_data.get('enablePerformAction', {}).get('enabled', True)
+    customerProfileBackendURL = config_data.get('customerProfileConfig', {}).get('backendAPIUrl', '')
     return performActionImplemented,customerProfileBackendURL
 
 
