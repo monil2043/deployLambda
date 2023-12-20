@@ -96,6 +96,19 @@
        "Version": "2012-10-17"
       },
       "PolicyName": "appconfig_full_access"
+     },
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": "ssm:GetParameter",
+         "Effect": "Allow",
+         "Resource": "*"
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "ssm_parameter_access"
      }
     ],
     "Tags": [
@@ -148,14 +161,14 @@
     ],
     "Content": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
+     "S3Key": "7850613fdbd84c31841c2ffa35adcb28843846d5fd843b783e8e5293a892b3b9.zip"
     }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/LambdaStackcommon/Resource",
-    "aws:asset:path": "asset.c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08",
+    "aws:asset:path": "asset.7850613fdbd84c31841c2ffa35adcb28843846d5fd843b783e8e5293a892b3b9",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Content"
    }
@@ -165,7 +178,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-     "S3Key": "d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad.zip"
+     "S3Key": "5e2aef92fb45e48b8e5ffa4960616a60d9b7b13ac858b3990e91d83d4450cbd2.zip"
     },
     "Environment": {
      "Variables": {
@@ -176,7 +189,8 @@
       "CONFIGURATION_MAX_AGE_MINUTES": "5",
       "ROLE_ARN": "arn:partition:service:region:account-id:resource-type:resource-id",
       "FEATURE_FLAG_URL": "http://localhost:2772/applications/FeatureFlagImplementation/environments/dev/configurations/featureFlagStore",
-      "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234"
+      "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234",
+      "MY_PARAMETER_ENV_VAR": "/mercury/backendIntegration/appConfigUrl"
      }
     },
     "FunctionName": "callExternalRestAPI",
@@ -216,7 +230,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/LambdaStack/validateAddress/Resource",
-    "aws:asset:path": "asset.d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad",
+    "aws:asset:path": "asset.5e2aef92fb45e48b8e5ffa4960616a60d9b7b13ac858b3990e91d83d4450cbd2",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -653,7 +667,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/2VQ227CMAz9lr2nZoV9wIBt0jSkoW7aKzKpabOmSdUkIBTl35ekCJD2knOxHdlnDmX5BL58wJMpeN0VUuzBf1nkHYvWzgvswVdaElsfVMatloKfk5xYYGaxQ2PIGlgmiBpWjndkV2iISez3NYKPAxs80/hDoxFasTenuE0kFq789UjKvquj7mit1UE0qfrPDEzqxsBGNxXZWEuTXW/Af1BeLELcSkXjWw+CJ2si+b0dcCcD41K7+oSWt+Bf0LR7jWOdum5iKXHsk5VJCKwio93IieXDY2yNUHnlayHyT2cHZwMrC5RDi/D48HxJe5ZwyqcYzrbV6tKyzeI+rsAmb7aAch6/+DVCFKOLt/cE1YR/ieYRys0BAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/2VQ3U7DIBR+lt3To918gW1qYlziUo23C6VnLZbCwoEtDeHdhdZsGm/4/uDkOyyhLB+gXPALFaLpCyVrCO+Oi54l6xAkHyBURiHbHvWEe6OkGLOcWWSKD3XDIez4iPYTLUmjc/5HP3st3E9w5U9n1O5Fn02PW6OPss3pPzMyWh04ETqCdYakYeNFj27DCZkyLcHOtBW69DLP7QeC8IpTywRpgE7GhzlJka2ZTOdtm18yMqGMby7ciQ7CI6euNtw2+dZNrBW3Q7YmEiOrkIy3AtnUMf1hK/W00DVI/M27k3eR7UfXGX23gnIJ94svkrKwPpUfEKoZvwEqIco1mgEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "DeployPowerLambda/CDKMetadata/Default"

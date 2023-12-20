@@ -85,6 +85,19 @@
                               ],
                               "Version": "2012-10-17"
                             }
+                          },
+                          {
+                            "policyName": "ssm_parameter_access",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "ssm:GetParameter",
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
                           }
                         ],
                         "tags": [
@@ -193,7 +206,7 @@
                         ],
                         "content": {
                           "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-                          "s3Key": "c9835b7a98d8757a352c633c271e1f6a1cba538c6792e3a6c11eac9f84a6fc08.zip"
+                          "s3Key": "7850613fdbd84c31841c2ffa35adcb28843846d5fd843b783e8e5293a892b3b9.zip"
                         }
                       }
                     },
@@ -204,8 +217,8 @@
                   }
                 },
                 "constructInfo": {
-                  "fqn": "@aws-cdk/aws-lambda-python-alpha.PythonLayerVersion",
-                  "version": "2.114.1-alpha.0"
+                  "fqn": "aws-cdk-lib.aws_lambda.LayerVersion",
+                  "version": "2.114.1"
                 }
               },
               "LambdaStackAppConfigLayer": {
@@ -254,7 +267,7 @@
                       "aws:cdk:cloudformation:props": {
                         "code": {
                           "s3Bucket": "cdk-hnb659fds-assets-437676487212-us-east-1",
-                          "s3Key": "d556b0891c3df25fec3b47facd980aa53e345cc2a4e50f5a99a420e8ef27a3ad.zip"
+                          "s3Key": "5e2aef92fb45e48b8e5ffa4960616a60d9b7b13ac858b3990e91d83d4450cbd2.zip"
                         },
                         "environment": {
                           "variables": {
@@ -265,7 +278,8 @@
                             "CONFIGURATION_MAX_AGE_MINUTES": "5",
                             "ROLE_ARN": "arn:partition:service:region:account-id:resource-type:resource-id",
                             "FEATURE_FLAG_URL": "http://localhost:2772/applications/FeatureFlagImplementation/environments/dev/configurations/featureFlagStore",
-                            "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234"
+                            "CUSTOMER_PROFILE_URL": "https://f1gb42bn54.execute-api.us-east-1.amazonaws.com/DEV/GetCustomerProfile?keyType=phoneNumber&keyValue=1234",
+                            "MY_PARAMETER_ENV_VAR": "/mercury/backendIntegration/appConfigUrl"
                           }
                         },
                         "functionName": "callExternalRestAPI",

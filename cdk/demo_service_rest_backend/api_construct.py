@@ -19,13 +19,13 @@ class ApiConstruct(Construct):
     def __init__(self, scope: Construct, id_: str, ssmParamName: str) -> None:
         super().__init__(scope, id_)
         self.id_ = id_
-        self.my_ssm_parameter_value = ssm.StringParameter.value_for_string_parameter(
-            self,
-            ssmParamName
-        )
+        # self.my_ssm_parameter_value = ssm.StringParameter.value_for_string_parameter(
+        #     self,
+        #     ssmParamName
+        # )
         self.lambda_role = self._build_lambda_role()
         self.common_layer = self._build_common_layer()
-        self.create_address_validation = self._add_lambda_integration(self.lambda_role)
+        self.create_address_validation = self._add_lambda_integration(self.lambda_role, ssmParamName)
         self.monitoring = CrudMonitoring(self, id_, [self.create_address_validation])
         
 
@@ -73,9 +73,8 @@ class ApiConstruct(Construct):
     def _add_lambda_integration(
         self,
         role: iam.Role,
+        ssmParamName
     ) -> _lambda.Function:
-        
-        ssm_value = self.my_ssm_parameter_value
 
         appconfig_layer = LayerVersion.from_layer_version_arn(
              self, f'{self.id_}AppConfigLayer', layer_version_arn='arn:aws:lambda:us-east-1:027255383542:layer:AWS-AppConfig-Extension:113')
@@ -97,7 +96,7 @@ class ApiConstruct(Construct):
                 'ROLE_ARN': 'arn:partition:service:region:account-id:resource-type:resource-id',  # for env vars example
                 'FEATURE_FLAG_URL': constants.FEATURE_FLAG_URL,
                 'CUSTOMER_PROFILE_URL': constants.CUSTOMER_PROFILE_URL,
-                'MY_PARAMETER_ENV_VAR': ssm_value
+                'MY_PARAMETER_ENV_VAR': ssmParamName
             },
             tracing=_lambda.Tracing.ACTIVE,
             retry_attempts=0,
